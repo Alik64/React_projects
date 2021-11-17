@@ -18,7 +18,10 @@ export default function Slider(props) {
               slideAnim.index === index + 1 ? "slide active-anim" : "slide"
             }
           >
-            <img src={`/Imgs/img${index + 1}.jpg`} alt="photo de slide" />
+            <img
+              src={process.env.PUBLIC_URL + `/Imgs/img${index + 1}.jpg`}
+              alt="photo de slide"
+            />
           </div>
         );
       })}

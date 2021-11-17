@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import "./Slider.css";
 import dataSlider from "./dataSlider";
+import BtnSlider from "./BtnSlider";
 
 export default function Slider(props) {
   const [slideAnim, setSlideAnim] = useState({
@@ -8,6 +9,8 @@ export default function Slider(props) {
     inProgress: false,
   });
 
+  const nextSlide = () => {};
+  const prevSlide = () => {};
   return (
     <div className="container-slider">
       {dataSlider.map((obj, index) => {
@@ -20,11 +23,14 @@ export default function Slider(props) {
           >
             <img
               src={process.env.PUBLIC_URL + `/Imgs/img${index + 1}.jpg`}
-              alt="photo de slide"
+              alt="slide"
             />
           </div>
         );
       })}
+
+      <BtnSlider moveSlide={nextSlide} direction={"next"} />
+      <BtnSlider moveSlide={prevSlide} direction={"prev"} />
     </div>
   );
 }

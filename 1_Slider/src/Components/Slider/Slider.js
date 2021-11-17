@@ -9,7 +9,7 @@ export default function Slider(props) {
   });
 
   return (
-    <div>
+    <div className="container-slider">
       {dataSlider.map((obj, index) => {
         return (
           <div

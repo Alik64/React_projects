@@ -8,5 +8,20 @@ export default function Slider(props) {
     inProgress: false,
   });
 
-  return <div></div>;
+  return (
+    <div>
+      {dataSlider.map((obj, index) => {
+        return (
+          <div
+            key={obj.id}
+            className={
+              slideAnim.index === index + 1 ? "slide active-anim" : "slide"
+            }
+          >
+            <img src={`/Imgs/img${index + 1}.jpg`} alt="photo de slide" />
+          </div>
+        );
+      })}
+    </div>
+  );
 }

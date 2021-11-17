@@ -9,8 +9,21 @@ export default function Slider(props) {
     inProgress: false,
   });
 
-  const nextSlide = () => {};
-  const prevSlide = () => {};
+  const nextSlide = () => {
+    if (slideAnim.index !== dataSlider.length) {
+      setSlideAnim({ index: slideAnim.index + 1, inProgress: true });
+    } else if (slideAnim.index === dataSlider.length) {
+      setSlideAnim({ index: 1, inProgress: true });
+    }
+  };
+
+  const prevSlide = () => {
+    if (slideAnim.index !== 1) {
+      setSlideAnim({ index: slideAnim.index - 1, inProgress: true });
+    } else if (slideAnim.index === 1) {
+      setSlideAnim({ index: dataSlider.length, inProgress: true });
+    }
+  };
   return (
     <div className="container-slider">
       {dataSlider.map((obj, index) => {

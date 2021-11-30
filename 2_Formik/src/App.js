@@ -1,6 +1,7 @@
 
 import './App.css';
-import Form from './Components/Form';
+import Form from './Components/Form.jsx';
+
 
 function App() {
   return (

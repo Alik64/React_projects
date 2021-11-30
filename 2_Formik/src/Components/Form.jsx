@@ -12,6 +12,12 @@ export default function Form() {
             name: "",
             email: "",
             password: ""
+        },
+        onSubmit: values => {
+            console.log(values)
+        },
+        validate: values => {
+            // values.name values.email ... etc
         }
     })
     return (
@@ -41,7 +47,7 @@ export default function Form() {
 
 
                 <pre>{JSON.stringify(formik.values)}</pre>
-                <button>Submit</button>
+                <button type="submit">Submit</button>
             </form>
 
 

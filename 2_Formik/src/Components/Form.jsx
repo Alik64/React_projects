@@ -18,7 +18,9 @@ export default function Form() {
         <div className={styles.wrapper} >
 
 
-            <form className={styles.form}>
+            <form
+                onSubmit={formik.handleSubmit}
+                className={styles.form}>
 
                 <label htmlFor="chanel">Chanel</label>
                 <input type="text" id="chanel" name="chanel" onChange={formik.handleChange} value={formik.values.chanel} />

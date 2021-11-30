@@ -41,39 +41,9 @@ const validate = values => {
 
 export default function Form() {
     const formik = useFormik({
-        initialValues: {
-            chanel: "",
-            name: "",
-            email: "",
-            password: ""
-        },
-        onSubmit: values => {
-            console.log(values)
-        },
-        validate: values => {
-            // values.name values.email ... etc
-            // errors.name errors.email ... etc
-            // errors.name = 'This field is requered'
-            let errors = {}
-
-            if (!values.name) {
-                errors.name = 'Required'
-            }
-            if (!values.email) {
-                errors.email = 'Required'
-            } else if (!/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(values.email)) {
-                errors.email = 'Invalid email format'
-
-            }
-            if (!values.chanel) {
-                errors.chanel = 'Required'
-            }
-            if (!values.password) {
-                errors.password = 'Required'
-            }
-
-            return errors
-        }
+        initialValues,
+        onSubmit,
+        validate,
     })
     return (
         <div className={styles.wrapper} >

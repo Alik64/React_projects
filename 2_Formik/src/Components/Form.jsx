@@ -29,9 +29,7 @@ const validate = values => {
         errors.email = 'Invalid email format'
 
     }
-    if (!values.chanel) {
-        errors.chanel = 'Required'
-    }
+
     if (!values.password) {
         errors.password = 'Required'
     }
@@ -45,6 +43,7 @@ export default function Form() {
         onSubmit,
         validate,
     })
+    console.log(formik.errors)
     return (
         <div className={styles.wrapper} >
 
@@ -53,22 +52,25 @@ export default function Form() {
                 onSubmit={formik.handleSubmit}
                 className={styles.form}>
 
-                <label htmlFor="chanel">Chanel</label>
-                <input type="text" id="chanel" name="chanel" onChange={formik.handleChange} value={formik.values.chanel} />
 
+                <div className={styles.form_champ}>
+                    <label htmlFor="name">Name</label>
+                    <input type="text" id="name" name="name" onChange={formik.handleChange} value={formik.values.name} />
+                    {formik.errors.name && <div className={styles.error}>{formik.errors.name}</div>}
+                </div>
 
-                <label htmlFor="name">Name</label>
-                <input type="text" id="name" name="name" onChange={formik.handleChange} value={formik.values.name} />
+                <div className={styles.form_champ}>
+                    <label htmlFor="email">Email</label>
+                    <input type="email" id="email" name="email" onChange={formik.handleChange} value={formik.values.email} />
+                    {formik.errors.email && <div className={styles.error}>{formik.errors.email}</div>}
+                </div>
 
+                <div className={styles.form_champ}>
+                    <label htmlFor="password">Password</label>
+                    <input type="password" id="password" name="password" onChange={formik.handleChange} value={formik.values.password} />
+                    {formik.errors.password && <div className={styles.error}>{formik.errors.password}</div>}
+                </div>
 
-
-                <label htmlFor="email">Email</label>
-                <input type="email" id="email" name="email" onChange={formik.handleChange} value={formik.values.email} />
-
-
-
-                <label htmlFor="password">Password</label>
-                <input type="password" id="password" name="password" onChange={formik.handleChange} value={formik.values.password} />
 
 
                 <pre>{JSON.stringify(formik.values)}</pre>

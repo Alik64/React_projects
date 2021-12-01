@@ -38,6 +38,12 @@ const validate = values => {
     return errors
 }
 
+const validationSchema = Yup.object({
+    name: Yup.string().required('Required'),
+    email: Yup.string().email('Invalid email format').required('Required'),
+    password: Yup.string().required('Required')
+
+})
 export default function Form() {
     const formik = useFormik({
         initialValues,

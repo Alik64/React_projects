@@ -43,7 +43,7 @@ export default function Form() {
         onSubmit,
         validate,
     })
-    console.log(formik.errors)
+    console.log(formik.touched)
     return (
         <div className={styles.wrapper} >
 
@@ -55,20 +55,27 @@ export default function Form() {
 
                 <div className={styles.form_champ}>
                     <label htmlFor="name">Name</label>
-                    <input type="text" id="name" name="name" onChange={formik.handleChange} value={formik.values.name} />
-                    {formik.errors.name && <div className={styles.error}>{formik.errors.name}</div>}
+                    <input type="text" id="name" name="name"
+                        onBlur={formik.handleBlur}
+                        onChange={formik.handleChange} value={formik.values.name} />
+
+                    {formik.touched.name && formik.errors.name ? <div className={styles.error}>{formik.errors.name}</div> : null}
                 </div>
 
                 <div className={styles.form_champ}>
                     <label htmlFor="email">Email</label>
-                    <input type="email" id="email" name="email" onChange={formik.handleChange} value={formik.values.email} />
-                    {formik.errors.email && <div className={styles.error}>{formik.errors.email}</div>}
+                    <input type="email" id="email" name="email"
+                        onBlur={formik.handleBlur}
+                        onChange={formik.handleChange} value={formik.values.email} />
+                    {formik.touched.email && formik.errors.email ? <div className={styles.error}>{formik.errors.email}</div> : null}
                 </div>
 
                 <div className={styles.form_champ}>
                     <label htmlFor="password">Password</label>
-                    <input type="password" id="password" name="password" onChange={formik.handleChange} value={formik.values.password} />
-                    {formik.errors.password && <div className={styles.error}>{formik.errors.password}</div>}
+                    <input type="password" id="password" name="password"
+                        onBlur={formik.handleBlur}
+                        onChange={formik.handleChange} value={formik.values.password} />
+                    {formik.touched.password && formik.errors.password ? <div className={styles.error}>{formik.errors.password}</div> : null}
                 </div>
 
 

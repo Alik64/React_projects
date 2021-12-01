@@ -2,7 +2,7 @@ import React from 'react'
 import styles from './Form.module.css'
 import * as Yup from 'yup'
 
-import { Formik } from 'formik'
+import { Formik, Form, Field, ErrorMessage } from 'formik'
 
 const initialValues = {
     chanel: "",
@@ -22,7 +22,7 @@ const validationSchema = Yup.object({
     password: Yup.string().required('Required')
 
 })
-export default function Form() {
+export default function Formulaire() {
 
 
     return (

@@ -48,7 +48,8 @@ export default function Form() {
     const formik = useFormik({
         initialValues,
         onSubmit,
-        validate,
+        validationSchema
+        //validate,
     })
     console.log(formik.touched)
     return (

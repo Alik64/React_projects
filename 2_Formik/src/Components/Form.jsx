@@ -2,7 +2,7 @@ import React from 'react'
 import styles from './Form.module.css'
 import * as Yup from 'yup'
 
-import { useFormik } from 'formik'
+import { Formik } from 'formik'
 
 const initialValues = {
     chanel: "",
@@ -15,28 +15,6 @@ const onSubmit = values => {
     console.log(values)
 }
 
-const validate = values => {
-    // values.name values.email ... etc
-    // errors.name errors.email ... etc
-    // errors.name = 'This field is requered'
-    let errors = {}
-
-    if (!values.name) {
-        errors.name = 'Required'
-    }
-    if (!values.email) {
-        errors.email = 'Required'
-    } else if (!/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(values.email)) {
-        errors.email = 'Invalid email format'
-
-    }
-
-    if (!values.password) {
-        errors.password = 'Required'
-    }
-
-    return errors
-}
 
 const validationSchema = Yup.object({
     name: Yup.string().required('Required'),
@@ -45,15 +23,14 @@ const validationSchema = Yup.object({
 
 })
 export default function Form() {
-    const formik = useFormik({
-        initialValues,
-        onSubmit,
-        validationSchema
-        //validate,
-    })
-    console.log(formik.touched)
+
+
     return (
-        <div className={styles.wrapper} >
+        <Formik className={styles.wrapper}
+            initialValues={initialValues}
+            onSubmit={onSubmit}
+            validationSchema={validationSchema}
+        >
 
 
             <form
@@ -64,8 +41,7 @@ export default function Form() {
                 <div className={styles.form_champ}>
                     <label htmlFor="name">Name</label>
                     <input type="text" id="name" name="name"
-                        onBlur={formik.handleBlur}
-                        onChange={formik.handleChange} value={formik.values.name} />
+                        {...formik.getFieldProps('name')} />
 
                     {formik.touched.name && formik.errors.name ? <div className={styles.error}>{formik.errors.name}</div> : null}
                 </div>
@@ -73,16 +49,16 @@ export default function Form() {
                 <div className={styles.form_champ}>
                     <label htmlFor="email">Email</label>
                     <input type="email" id="email" name="email"
-                        onBlur={formik.handleBlur}
-                        onChange={formik.handleChange} value={formik.values.email} />
+                        {...formik.getFieldProps('email')} />
+
                     {formik.touched.email && formik.errors.email ? <div className={styles.error}>{formik.errors.email}</div> : null}
                 </div>
 
                 <div className={styles.form_champ}>
                     <label htmlFor="password">Password</label>
                     <input type="password" id="password" name="password"
-                        onBlur={formik.handleBlur}
-                        onChange={formik.handleChange} value={formik.values.password} />
+                        {...formik.getFieldProps('password')} />
+
                     {formik.touched.password && formik.errors.password ? <div className={styles.error}>{formik.errors.password}</div> : null}
                 </div>
 
@@ -93,7 +69,7 @@ export default function Form() {
             </form>
 
 
-        </div>
+        </Formik>
     )
 }
 

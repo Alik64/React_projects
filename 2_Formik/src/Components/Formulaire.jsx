@@ -26,50 +26,48 @@ export default function Formulaire() {
 
 
     return (
-        <Formik className={styles.wrapper}
-            initialValues={initialValues}
-            onSubmit={onSubmit}
-            validationSchema={validationSchema}
-        >
+        <div className={styles.wrapper}>
+            <Formik
+                initialValues={initialValues}
+                onSubmit={onSubmit}
+                validationSchema={validationSchema}
+            >
 
 
-            <form
-                onSubmit={formik.handleSubmit}
-                className={styles.form}>
+                <Form className={styles.form}>
 
+                    <div className={styles.form_champ}>
+                        <label htmlFor="name">Name</label>
+                        <Field type="text" id="name" name="name"
+                        />
+                        <ErrorMessage name="name" className={styles.error} />
+                    </div>
 
-                <div className={styles.form_champ}>
-                    <label htmlFor="name">Name</label>
-                    <input type="text" id="name" name="name"
-                        {...formik.getFieldProps('name')} />
+                    <div className={styles.form_champ}>
+                        <label htmlFor="email">Email</label>
+                        <Field type="email" id="email" name="email"
+                        />
+                        <ErrorMessage name="email" className={styles.error} />
 
-                    {formik.touched.name && formik.errors.name ? <div className={styles.error}>{formik.errors.name}</div> : null}
-                </div>
+                    </div>
 
-                <div className={styles.form_champ}>
-                    <label htmlFor="email">Email</label>
-                    <input type="email" id="email" name="email"
-                        {...formik.getFieldProps('email')} />
-
-                    {formik.touched.email && formik.errors.email ? <div className={styles.error}>{formik.errors.email}</div> : null}
-                </div>
-
-                <div className={styles.form_champ}>
-                    <label htmlFor="password">Password</label>
-                    <input type="password" id="password" name="password"
-                        {...formik.getFieldProps('password')} />
-
-                    {formik.touched.password && formik.errors.password ? <div className={styles.error}>{formik.errors.password}</div> : null}
-                </div>
+                    <div className={styles.form_champ}>
+                        <label htmlFor="password">Password</label>
+                        <Field type="password" id="password" name="password"
+                        />
+                        <ErrorMessage name="password" className={styles.error} />
+                    </div>
 
 
 
-                <pre>{JSON.stringify(formik.values)}</pre>
-                <button type="submit">Submit</button>
-            </form>
+
+                    <button type="submit">Submit</button>
+                </Form>
 
 
-        </Formik>
+            </Formik>
+        </div>
+
     )
 }
 

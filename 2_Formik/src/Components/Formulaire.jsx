@@ -8,7 +8,8 @@ const initialValues = {
     chanel: "",
     name: "",
     email: "",
-    password: ""
+    password: "",
+    comments: ""
 }
 
 const onSubmit = values => {
@@ -32,8 +33,6 @@ export default function Formulaire() {
                 onSubmit={onSubmit}
                 validationSchema={validationSchema}
             >
-
-
                 <Form className={styles.form}>
 
                     <div className={styles.form_champ}>
@@ -58,7 +57,9 @@ export default function Formulaire() {
                         <ErrorMessage name="password" className={styles.error} />
                     </div>
 
-
+                    <div className={styles.form_champ}>
+                        <Field id="comments" name="comments" as="textarea" placeholder="Enter your comment" />
+                    </div>
 
 
                     <button type="submit">Submit</button>
@@ -70,5 +71,3 @@ export default function Formulaire() {
 
     )
 }
-
-

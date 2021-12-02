@@ -8,7 +8,7 @@
 }
 .form {
   display: grid;
-  place-items: center;
+  place-items: flex-start;
   border: 1px solid #fff;
   padding: 10px;
 }

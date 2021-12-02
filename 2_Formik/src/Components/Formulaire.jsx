@@ -3,6 +3,7 @@ import styles from './Form.module.css'
 import * as Yup from 'yup'
 
 import { Formik, Form, Field, ErrorMessage } from 'formik'
+import TextError from './TextError.jsx'
 
 const initialValues = {
     chanel: "",
@@ -19,9 +20,9 @@ const onSubmit = values => {
 
 
 const validationSchema = Yup.object({
-    name: Yup.string().required('Required'),
+    name: Yup.string().required('Required!'),
     email: Yup.string().email('Invalid email format').required('Required'),
-    password: Yup.string().required('Required')
+    password: Yup.string().required('Required!')
 
 })
 export default function Formulaire() {
@@ -38,16 +39,15 @@ export default function Formulaire() {
 
                     <div className={styles.form_champ}>
                         <label htmlFor="name">Name</label>
-                        <Field type="text" id="name" name="name"
-                        />
-                        <ErrorMessage name="name" className={styles.error} />
+                        <Field type="text" id="name" name="name" />
+                        <ErrorMessage name="name" component={TextError} />
                     </div>
 
                     <div className={styles.form_champ}>
                         <label htmlFor="email">Email</label>
                         <Field type="email" id="email" name="email"
                         />
-                        <ErrorMessage name="email" className={styles.error} />
+                        <ErrorMessage name="email" />
 
                     </div>
 
@@ -55,7 +55,7 @@ export default function Formulaire() {
                         <label htmlFor="password">Password</label>
                         <Field type="password" id="password" name="password"
                         />
-                        <ErrorMessage name="password" className={styles.error} />
+                        <ErrorMessage name="password" />
                     </div>
 
                     <div className={styles.form_champ}>

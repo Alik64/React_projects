@@ -21,7 +21,7 @@ const onSubmit = values => {
 
 const validationSchema = Yup.object({
     name: Yup.string().required('Required!'),
-    email: Yup.string().email('Invalid email format').required('Required'),
+    email: Yup.string().email('Invalid email format').required('Required!'),
     password: Yup.string().required('Required!')
 
 })
@@ -47,7 +47,9 @@ export default function Formulaire() {
                         <label htmlFor="email">Email</label>
                         <Field type="email" id="email" name="email"
                         />
-                        <ErrorMessage name="email" />
+                        <ErrorMessage name="email" >
+                            {errMsg => <div className="error">{errMsg}</div>}
+                        </ErrorMessage>
 
                     </div>
 
@@ -55,7 +57,7 @@ export default function Formulaire() {
                         <label htmlFor="password">Password</label>
                         <Field type="password" id="password" name="password"
                         />
-                        <ErrorMessage name="password" />
+                        <ErrorMessage name="password" component={TextError} />
                     </div>
 
                     <div className={styles.form_champ}>

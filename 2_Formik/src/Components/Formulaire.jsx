@@ -9,7 +9,8 @@ const initialValues = {
     name: "",
     email: "",
     password: "",
-    comments: ""
+    comments: "",
+    adress: ""
 }
 
 const onSubmit = values => {
@@ -59,6 +60,24 @@ export default function Formulaire() {
 
                     <div className={styles.form_champ}>
                         <Field id="comments" name="comments" as="textarea" placeholder="Enter your comment" />
+                    </div>
+                    <div className={styles.form_champ}>
+                        <label htmlFor="adress">Adress</label>
+
+                        <Field name="adress">
+                            {
+                                (props) => {
+                                    const { field, form, meta } = props
+
+                                    return (
+                                        <div>
+                                            <input type="text" id="adress"  {...field} />
+                                            {meta.touched && meta.error ? <div>{meta.error}</div> : null}
+                                        </div>
+                                    )
+                                }
+                            }
+                        </Field>
                     </div>
 
 

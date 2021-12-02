@@ -57,7 +57,7 @@ export default function Formulaire() {
                         <label htmlFor="password">Password</label>
                         <Field type="password" id="password" name="password"
                         />
-                        <ErrorMessage name="password" component={TextError} />
+                        <ErrorMessage name="password" component='div' className="error" />
                     </div>
 
                     <div className={styles.form_champ}>

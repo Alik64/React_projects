@@ -54,6 +54,7 @@ export default function Formulaire() {
                 validationSchema={validationSchema}
                 validateOnChange={false}
                 validateOnBlur={true}
+                validateOnMount
             >
                 {formik => {
                     console.log("formik props", formik)

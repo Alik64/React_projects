@@ -15,7 +15,8 @@ const initialValues = {
     social: {
         facebook: "",
         twitter: ""
-    }
+    },
+    phoneNumbers: ["", ""]
 }
 
 const onSubmit = values => {
@@ -30,8 +31,7 @@ const validationSchema = Yup.object({
     social: Yup.object({
         facebook: Yup.string().required('Required!'),
         twitter: Yup.string().required('Required twitter'),
-    })
-
+    }),
 })
 export default function Formulaire() {
 
@@ -97,8 +97,15 @@ export default function Formulaire() {
                     <div className={styles.form_champ}>
                         <label htmlFor="twitter">Twitter profile</label>
                         <Field id="twitter" name="social.twitter" type="text" />
-                        <ErrorMessage name="social.twitter" component='div' className="error" />
 
+                    </div>
+                    <div className={styles.form_champ}>
+                        <label htmlFor="telFix">Fix Tel Number</label>
+                        <Field id="telFix" name="phoneNumber[0]" type="text" />
+                    </div>
+                    <div className={styles.form_champ}>
+                        <label htmlFor="telMobile">Mobile Number</label>
+                        <Field id="telMobile" name="phoneNumber[1]" type="text" />
                     </div>
 
                     <button type="submit">Submit</button>

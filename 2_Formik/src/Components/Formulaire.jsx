@@ -7,11 +7,11 @@ import TextError from './TextError.jsx'
 
 const initialValues = {
 
-    name: "",
-    email: "",
-    password: "",
-    comments: "",
-    adress: "",
+    // name: "",
+    // email: "",
+    // password: "",
+    // comments: "",
+    // adress: "",
     social: {
         facebook: "",
         twitter: ""
@@ -20,8 +20,10 @@ const initialValues = {
     phNumber: [""]
 }
 
-const onSubmit = values => {
-    console.log(values)
+const onSubmit = (values, onSubmitProps) => {
+    console.log("values:", values)
+    console.log("onSubmitProps:", onSubmitProps)
+    onSubmitProps.setSubmitting(false)
 }
 
 
@@ -30,10 +32,10 @@ const validationSchema = Yup.object({
     email: Yup.string().email('Invalid email format').required('Required!'),
     password: Yup.string().required('Required!'),
 
-    social: Yup.object({
-        facebook: Yup.string().required('Required!'),
-        twitter: Yup.string().required('Required twitter'),
-    }),
+    // social: Yup.object({
+    //     facebook: Yup.string().required('Required!'),
+    //     twitter: Yup.string().required('Required twitter'),
+    // }),
 })
 
 const validateComments = value => {
@@ -160,7 +162,8 @@ export default function Formulaire() {
                                     comments: true,
                                     password: true
                                 })}>Visit fields</button>
-                                <button type="submit" disabled={!(formik.dirty && formik.isValid)}>Submit</button>
+                                <button type="submit" disabled={!formik.isValid || formik.isSubmitting}>Submit</button>
+
                             </div>
                         </Form>
                     )

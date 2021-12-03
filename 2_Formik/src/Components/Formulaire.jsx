@@ -2,7 +2,7 @@ import React from 'react'
 import styles from './Form.module.css'
 import * as Yup from 'yup'
 
-import { Formik, Form, Field, ErrorMessage } from 'formik'
+import { Formik, Form, Field, ErrorMessage, FieldArray } from 'formik'
 import TextError from './TextError.jsx'
 
 const initialValues = {
@@ -16,7 +16,8 @@ const initialValues = {
         facebook: "",
         twitter: ""
     },
-    phoneNumbers: ["", ""]
+    phoneNumbers: ["", ""],
+    phNumber: [""]
 }
 
 const onSubmit = values => {
@@ -101,11 +102,35 @@ export default function Formulaire() {
                     </div>
                     <div className={styles.form_champ}>
                         <label htmlFor="telFix">Fix Tel Number</label>
-                        <Field id="telFix" name="phoneNumber[0]" type="text" />
+                        <Field id="telFix" name="phoneNumbers[0]" type="text" />
                     </div>
                     <div className={styles.form_champ}>
                         <label htmlFor="telMobile">Mobile Number</label>
-                        <Field id="telMobile" name="phoneNumber[1]" type="text" />
+                        <Field id="telMobile" name="phoneNumbers[1]" type="text" />
+                    </div>
+                    <div className={styles.form_champ}>
+                        <label htmlFor="">List of phone numbers</label>
+                        <FieldArray name='phNumber'>
+                            {
+                                (fieldArrayProps) => {
+                                    const { push, remove, form } = fieldArrayProps
+                                    const { values } = form
+                                    const { phNumber } = values
+                                    return (
+                                        <div>
+                                            {phNumber.map((phNumber, index) => (
+                                                <div key={index}>
+                                                    <Field name={`phNumber[${index}]`}></Field>
+                                                    {index > 0 && <button type="button" onClick={() => remove(index)} >-</button>}
+
+                                                    <button type="button" onClick={() => push('')} >+</button>
+                                                </div>
+                                            ))}
+                                        </div>
+                                    )
+                                }
+                            }
+                        </FieldArray>
                     </div>
 
                     <button type="submit">Submit</button>

@@ -54,7 +54,7 @@ export default function Formulaire() {
                 validationSchema={validationSchema}
                 validateOnChange={false}
                 validateOnBlur={true}
-                validateOnMount
+            // validateOnMount
             >
                 {formik => {
                     console.log("formik props", formik)
@@ -160,7 +160,7 @@ export default function Formulaire() {
                                     comments: true,
                                     password: true
                                 })}>Visit fields</button>
-                                <button type="submit" disabled={!formik.isValid}>Submit</button>
+                                <button type="submit" disabled={!(formik.dirty && formik.isValid)}>Submit</button>
                             </div>
                         </Form>
                     )

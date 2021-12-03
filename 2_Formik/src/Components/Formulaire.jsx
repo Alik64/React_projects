@@ -2,11 +2,11 @@ import React from 'react'
 import styles from './Form.module.css'
 import * as Yup from 'yup'
 
-import { Formik, Form, Field, ErrorMessage, FieldArray } from 'formik'
+import { Formik, Form, Field, ErrorMessage, FieldArray, FastField } from 'formik'
 import TextError from './TextError.jsx'
 
 const initialValues = {
-    chanel: "",
+
     name: "",
     email: "",
     password: "",
@@ -43,6 +43,8 @@ export default function Formulaire() {
                 initialValues={initialValues}
                 onSubmit={onSubmit}
                 validationSchema={validationSchema}
+                validateOnChange={false}
+                validateOnBlur={false}
             >
                 <Form className={styles.form}>
 
@@ -75,7 +77,7 @@ export default function Formulaire() {
                     <div className={styles.form_champ}>
                         <label htmlFor="adress">Adress</label>
 
-                        <Field name="adress">
+                        <FastField name="adress">
                             {
                                 (props) => {
                                     const { field, form, meta } = props
@@ -88,7 +90,7 @@ export default function Formulaire() {
                                     )
                                 }
                             }
-                        </Field>
+                        </FastField>
                     </div>
                     <div className={styles.form_champ}>
                         <label htmlFor="facebook">Facebook profile</label>
@@ -116,6 +118,7 @@ export default function Formulaire() {
                                     const { push, remove, form } = fieldArrayProps
                                     const { values } = form
                                     const { phNumber } = values
+                                    console.log('Form errors', form.errors)
                                     return (
                                         <div>
                                             {phNumber.map((phNumber, index) => (

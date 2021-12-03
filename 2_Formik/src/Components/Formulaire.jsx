@@ -11,7 +11,11 @@ const initialValues = {
     email: "",
     password: "",
     comments: "",
-    adress: ""
+    adress: "",
+    social: {
+        facebook: "",
+        twitter: ""
+    }
 }
 
 const onSubmit = values => {
@@ -22,7 +26,11 @@ const onSubmit = values => {
 const validationSchema = Yup.object({
     name: Yup.string().required('Required!'),
     email: Yup.string().email('Invalid email format').required('Required!'),
-    password: Yup.string().required('Required!')
+    password: Yup.string().required('Required!'),
+    social: Yup.object({
+        facebook: Yup.string().required('Required!'),
+        twitter: Yup.string().required('Required twitter'),
+    })
 
 })
 export default function Formulaire() {
@@ -81,7 +89,17 @@ export default function Formulaire() {
                             }
                         </Field>
                     </div>
+                    <div className={styles.form_champ}>
+                        <label htmlFor="facebook">Facebook profile</label>
+                        <Field id="facebook" name="social.facebook" type="text" />
+                        <ErrorMessage name="social.facebook" component='div' className="error" />
+                    </div>
+                    <div className={styles.form_champ}>
+                        <label htmlFor="twitter">Twitter profile</label>
+                        <Field id="twitter" name="social.twitter" type="text" />
+                        <ErrorMessage name="social.twitter" component='div' className="error" />
 
+                    </div>
 
                     <button type="submit">Submit</button>
                 </Form>

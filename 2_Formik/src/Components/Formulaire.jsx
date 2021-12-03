@@ -152,6 +152,12 @@ export default function Formulaire() {
 
                             <button type="button" onClick={() => formik.validateField('comments')}>Validate comments</button>
                             <button type="button" onClick={() => formik.validateForm('Form')}>Validate all</button>
+                            <button type="button" onClick={() => formik.setFieldTouched('comments')}>Visit comments</button>
+                            <button type="button" onClick={() => formik.setTouched({
+                                name: true,
+                                comments: true,
+                                password: true
+                            })}>Visit fields</button>
                             <button type="submit">Submit</button>
                         </Form>
                     )

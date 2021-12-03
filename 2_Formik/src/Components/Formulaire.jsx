@@ -149,16 +149,18 @@ export default function Formulaire() {
                                     }
                                 </FieldArray>
                             </div>
+                            <div>
 
-                            <button type="button" onClick={() => formik.validateField('comments')}>Validate comments</button>
-                            <button type="button" onClick={() => formik.validateForm('Form')}>Validate all</button>
-                            <button type="button" onClick={() => formik.setFieldTouched('comments')}>Visit comments</button>
-                            <button type="button" onClick={() => formik.setTouched({
-                                name: true,
-                                comments: true,
-                                password: true
-                            })}>Visit fields</button>
-                            <button type="submit">Submit</button>
+                                <button type="button" onClick={() => formik.validateField('comments')}>Validate comments</button>
+                                <button type="button" onClick={() => formik.validateForm('Form')}>Validate all</button>
+                                <button type="button" onClick={() => formik.setFieldTouched('comments')}>Visit comments</button>
+                                <button type="button" onClick={() => formik.setTouched({
+                                    name: true,
+                                    comments: true,
+                                    password: true
+                                })}>Visit fields</button>
+                                <button type="submit" disabled={!formik.isValid}>Submit</button>
+                            </div>
                         </Form>
                     )
                 }}

@@ -1,6 +1,6 @@
 
 import './App.css';
-import Formulaire from './Components/Formulaire';
+import Formulaire from './Components/Initial/Formulaire';
 
 
 

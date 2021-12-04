@@ -24,7 +24,7 @@ export default function FormikContainer() {
             {formik => <Form>
                 <FormikControl control='input' type='email' label='Email' name='email' />
                 <FormikControl control='textarea' type='textarea' label='Description' name='description' />
-                <FormikControl control='textarea' type='select' label='Description' name='description' />
+
                 <button type="submit">Submit</button>
             </Form>}
         </Formik>

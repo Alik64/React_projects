@@ -20,7 +20,7 @@ export default function FormikContainer() {
 
         >
             {formik => <Form>
-                <FormikControl />
+                <FormikControl control='input' type='email' label='Email' name='email' />
                 <button type="submit">Submit</button>
             </Form>}
         </Formik>

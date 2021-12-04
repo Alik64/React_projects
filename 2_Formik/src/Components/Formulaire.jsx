@@ -40,6 +40,7 @@ const onSubmit = (values, onSubmitProps) => {
     console.log("values:", values)
     console.log("onSubmitProps:", onSubmitProps)
     onSubmitProps.setSubmitting(false)
+    onSubmitProps.resetForm()
 }
 
 

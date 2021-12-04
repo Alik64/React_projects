@@ -180,7 +180,7 @@ export default function Formulaire() {
                                     password: true
                                 })}>Visit fields</button> */}
                                 <button type="button" onClick={() => setFormValues(savedValues)} >Load saved DATA</button>
-
+                                <button type="reset">Reset</button>
                                 <button type="submit" disabled={!formik.isValid || formik.isSubmitting}>Submit</button>
 
                             </div>

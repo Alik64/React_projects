@@ -8,8 +8,10 @@ export default function FormikContainer() {
     onSubmit = values => console.log('Form data', values)
 
     return (
-        <div>
-
-        </div>
+        <Formik>
+            {formik => <Form>
+                <button type="submit">Submit</button>
+            </Form>}
+        </Formik>
     )
 }

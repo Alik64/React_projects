@@ -5,10 +5,15 @@ import * as Yup from 'yup'
 export default function FormikContainer() {
     const initialValues = {};
     const validationSchema = Yup.object({})
-    onSubmit = values => console.log('Form data', values)
+    const onSubmit = values => console.log('Form data', values)
 
     return (
-        <Formik>
+        <Formik
+            initialValues={initialValues}
+            validationSchema={validationSchema}
+            onSubmit={onSubmit}
+
+        >
             {formik => <Form>
                 <button type="submit">Submit</button>
             </Form>}

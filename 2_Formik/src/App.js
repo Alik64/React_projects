@@ -1,5 +1,6 @@
 
 import './App.css';
+import FormikContainer from './Components/FormControl/FormikContainer';
 import Formulaire from './Components/Initial/Formulaire';
 
 
@@ -7,7 +8,8 @@ import Formulaire from './Components/Initial/Formulaire';
 function App() {
   return (
     <div className="App">
-      <Formulaire />
+      {/* <Formulaire /> */}
+      <FormikContainer />
     </div>
   );
 }

@@ -1,17 +1,33 @@
-import React from 'react'
+import React, { useState } from 'react'
 import styles from './Form.module.css'
 import * as Yup from 'yup'
 
 import { Formik, Form, Field, ErrorMessage, FieldArray, FastField } from 'formik'
 import TextError from './TextError.jsx'
 
+
 const initialValues = {
 
-    // name: "",
-    // email: "",
-    // password: "",
-    // comments: "",
-    // adress: "",
+    name: "",
+    email: "",
+    password: "",
+    comments: "",
+    adress: "",
+    social: {
+        facebook: "",
+        twitter: ""
+    },
+    phoneNumbers: ["", ""],
+    phNumber: [""]
+}
+
+const savedValues = {
+
+    name: "Utilisateur",
+    email: "util@mail.com",
+    password: "1234",
+    comments: "Saved data comments",
+    adress: "chateau",
     social: {
         facebook: "",
         twitter: ""
@@ -46,16 +62,17 @@ const validateComments = value => {
     return error
 }
 export default function Formulaire() {
-
+    const [formValues, setFormValues] = useState(null)
 
     return (
         <div className={styles.wrapper}>
             <Formik
-                initialValues={initialValues}
+                initialValues={formValues || initialValues}
                 onSubmit={onSubmit}
+                enableReinitialize
                 validationSchema={validationSchema}
-                validateOnChange={false}
-                validateOnBlur={true}
+            // validateOnChange={false}
+            // validateOnBlur={true}
             // validateOnMount
             >
                 {formik => {
@@ -154,14 +171,16 @@ export default function Formulaire() {
                             </div>
                             <div>
 
-                                <button type="button" onClick={() => formik.validateField('comments')}>Validate comments</button>
+                                {/* <button type="button" onClick={() => formik.validateField('comments')}>Validate comments</button>
                                 <button type="button" onClick={() => formik.validateForm('Form')}>Validate all</button>
                                 <button type="button" onClick={() => formik.setFieldTouched('comments')}>Visit comments</button>
                                 <button type="button" onClick={() => formik.setTouched({
                                     name: true,
                                     comments: true,
                                     password: true
-                                })}>Visit fields</button>
+                                })}>Visit fields</button> */}
+                                <button type="button" onClick={() => setFormValues(savedValues)} >Load saved DATA</button>
+
                                 <button type="submit" disabled={!formik.isValid || formik.isSubmitting}>Submit</button>
 
                             </div>

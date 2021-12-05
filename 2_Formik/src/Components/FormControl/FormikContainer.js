@@ -11,6 +11,7 @@ export default function FormikContainer() {
         selectOption: "",
         radioOption: "",
         checkboxOption: [],
+        birthDate: null,
 
     };
     const dropdownOptions = [
@@ -35,7 +36,7 @@ export default function FormikContainer() {
         selectOption: Yup.string().required('Required'),
         radioOption: Yup.string().required('Required'),
         checkboxOption: Yup.array().min(1, 'Required'),
-
+        birthDate: Yup.date().required('Required').nullable()
     })
     const onSubmit = values => console.log('Form data', values)
 
@@ -66,6 +67,11 @@ export default function FormikContainer() {
                     label='Checkbox topics'
                     name='checkboxOption'
                     options={checkboxOptions}
+                />
+                <FormikControl
+                    control='date'
+                    label='Pick a date'
+                    name='birthDate'
                 />
                 <button type="submit">Submit</button>
             </Form>}

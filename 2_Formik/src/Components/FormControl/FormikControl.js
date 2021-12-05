@@ -1,7 +1,7 @@
 import React from 'react'
-import Input from './Input'
-import Select from './Select'
-import Textarea from './Textarea'
+import Input from './Elements/Input'
+import Select from './Elements/Select'
+import Textarea from './Elements/Textarea'
 
 export default function FormikControl(props) {
     const { control, ...rest } = props

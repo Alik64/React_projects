@@ -34,7 +34,7 @@ export default function FormikContainer() {
         description: Yup.string().required('Required'),
         selectOption: Yup.string().required('Required'),
         radioOption: Yup.string().required('Required'),
-        checkboxOption: Yup.array().required('Required'),
+        checkboxOption: Yup.array().min(1, 'Required'),
 
     })
     const onSubmit = values => console.log('Form data', values)
@@ -54,7 +54,7 @@ export default function FormikContainer() {
                     label='Select a topic'
                     name='selectOption'
                     options={dropdownOptions} />
-                <button type="submit">Submit</button>
+
                 <FormikControl
                     control='radio'
                     label='Radio topic'
@@ -67,7 +67,7 @@ export default function FormikContainer() {
                     name='checkboxOption'
                     options={checkboxOptions}
                 />
-
+                <button type="submit">Submit</button>
             </Form>}
         </Formik>
     )

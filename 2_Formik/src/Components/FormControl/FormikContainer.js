@@ -38,7 +38,11 @@ export default function FormikContainer() {
         checkboxOption: Yup.array().min(1, 'Required'),
         birthDate: Yup.date().required('Required').nullable()
     })
-    const onSubmit = values => console.log('Form data', values)
+    const onSubmit = values => {
+        console.log('Form data', values)
+        console.log('Saved data', JSON.parse(JSON.stringify(values)))
+
+    }
 
     return (
         <Formik

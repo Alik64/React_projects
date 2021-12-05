@@ -63,7 +63,7 @@ export default function FormikContainer() {
                 />
                 <FormikControl
                     control='checkbox'
-                    label='Checkbox topic'
+                    label='Checkbox topics'
                     name='checkboxOption'
                     options={checkboxOptions}
                 />

@@ -2,7 +2,7 @@ import React from 'react'
 import { Field, ErrorMessage } from 'formik'
 import TextError from './TextError'
 
-function SelectOptions(props) {
+function Select(props) {
     const { name, label, ...rest } = props
     return (
         <div className="form-control">
@@ -12,4 +12,4 @@ function SelectOptions(props) {
     )
 }
 
-export default SelectOptions
+export default Select

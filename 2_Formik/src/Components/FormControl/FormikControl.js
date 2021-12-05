@@ -10,6 +10,7 @@ export default function FormikControl(props) {
         case 'textarea':
             return <Textarea {...rest} />
         case 'select':
+
         case 'radio':
         case 'checkbox':
         case 'date':

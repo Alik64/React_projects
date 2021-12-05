@@ -1,4 +1,4 @@
-import React, { Fragment } from 'react'
+import React from 'react'
 
 import { Field, ErrorMessage } from 'formik'
 import TextError from '../TextError'
@@ -12,16 +12,18 @@ function RadioButtons(props) {
             <Field name={name} {...rest}>
                 {
                     ({ field }) => {
+                        console.log('Field', field)
                         return options.map(option => {
-                            <Fragment key={option.key}>
+                            return (<React.Fragment key={option.key}>
                                 <input
                                     type="radio"
                                     id={option.value}
                                     {...field}
                                     value={option.value}
                                     checked={field.value === option.value} />
-                                <label htmlFor="{option.value}">{option.value}</label>
-                            </Fragment>
+                                <label htmlFor="{option.value}">{option.key}</label>
+                            </React.Fragment>)
+
                         })
                     }
                 }

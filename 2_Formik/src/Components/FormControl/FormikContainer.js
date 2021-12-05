@@ -9,6 +9,7 @@ export default function FormikContainer() {
         email: "",
         description: "",
         selectOption: "",
+        radioOption: "",
 
     };
     const dropdownOptions = [
@@ -17,10 +18,16 @@ export default function FormikContainer() {
         { key: 'Option 2', value: 'option2' },
         { key: 'Option 3', value: 'option3' },
     ]
+    const radioOptions = [
+        { key: 'Option 1', value: 'roption1' },
+        { key: 'Option 2', value: 'roption2' },
+        { key: 'Option 3', value: 'roption3' },
+    ]
     const validationSchema = Yup.object({
         email: Yup.string().required('Email is required').email('Invalid email format'),
         description: Yup.string().required('Required'),
-        selectOption: Yup.string().required('Required')
+        selectOption: Yup.string().required('Required'),
+        radioOption: Yup.string().required('Required'),
 
     })
     const onSubmit = values => console.log('Form data', values)
@@ -41,6 +48,13 @@ export default function FormikContainer() {
                     name='selectOption'
                     options={dropdownOptions} />
                 <button type="submit">Submit</button>
+                <FormikControl
+                    control='radio'
+                    label='Radio topic'
+                    name='radioOption'
+                    options={radioOptions}
+                />
+
             </Form>}
         </Formik>
     )

@@ -34,7 +34,7 @@ export default function FormikContainer() {
         description: Yup.string().required('Required'),
         selectOption: Yup.string().required('Required'),
         radioOption: Yup.string().required('Required'),
-        checkboxOption: Yup.string().required('Required'),
+        checkboxOption: Yup.array().required('Required'),
 
     })
     const onSubmit = values => console.log('Form data', values)

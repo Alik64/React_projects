@@ -4,7 +4,7 @@ import { Field, ErrorMessage } from 'formik'
 import TextError from '../TextError'
 
 
-function RadioButtons() {
+function RadioButtons(props) {
     const { label, name, options, ...rest } = props
     return (
         <div className="form-control">

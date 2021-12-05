@@ -2,12 +2,12 @@ import React from 'react'
 import { Field, ErrorMessage } from 'formik'
 import TextError from '../TextError'
 
-function Checkbox() {
+function CheckboxGroup() {
     return (
         <div>
-
+            hello
         </div>
     )
 }
 
-export default Checkbox
+export default CheckboxGroup

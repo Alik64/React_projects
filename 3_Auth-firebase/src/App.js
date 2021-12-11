@@ -6,8 +6,8 @@ import Home from "./pages/Home"
 function App() {
   return (
     <>
-      <Navbar />
       <SignUpModal />
+      <Navbar />
       <Routes>
         <Route path="/" element={<Home />} />
       </Routes>

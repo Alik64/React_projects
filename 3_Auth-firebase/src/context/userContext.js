@@ -5,7 +5,7 @@ export const UserContext = createContext()
 export function UserContextProvider(props) {
     const [modalState, setModalState] = useState({
         signInModal: false,
-        signUpModal: false
+        signUpModal: true
     })
 
     const toggleModals = modal => {

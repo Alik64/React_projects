@@ -1,6 +1,6 @@
 import React from 'react'
 
-export default function SignUpModal() {
+export default function SignUpModal(props) {
 
     return (
         <>

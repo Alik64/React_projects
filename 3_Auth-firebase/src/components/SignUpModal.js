@@ -49,10 +49,15 @@ export default function SignUpModal(props) {
             }
         }
     }
+    // supprimer le message d'erreur + la fermeture de modal
+    const closeModal = () => {
+        setValidation("")
+        toggleModals("close")
+    }
     return (
         <> {modalState.signUpModal && <div className="position-fixed top-0 vw-100 vh-100">
             <div // Overlay
-                onClick={() => toggleModals('close')}
+                onClick={closeModal}
                 className="w-100 h-100 bg-dark bg-opacity-75">
             </div>
             <div className="position-absolute top-50 start-50 translate-middle" style={{ minWidth: "400px" }}>
@@ -60,7 +65,7 @@ export default function SignUpModal(props) {
                     <div className="modal-content">
                         <div className="modal-header">
                             <h5 className="modal-title">Sign Up</h5>
-                            <button onClick={() => toggleModals('close')} className="btn-close"></button>
+                            <button onClick={closeModal} className="btn-close"></button>
                         </div>
 
                         <div className="modal-body">

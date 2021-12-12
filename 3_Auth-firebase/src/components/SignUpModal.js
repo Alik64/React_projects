@@ -10,9 +10,20 @@ export default function SignUpModal(props) {
             inputs.current.push(el)
         }
     }
+    const [validation, setValidation] = useState("")
+    // Validation
     const handleForm = e => {
         e.preventDefault()
+        // si Password moins 6 charactères
 
+        if ((inputs.current[1].value.length || inputs.current[2].value.length) < 6) {
+            setValidation("6 characters min")
+            return
+        }
+        if ((inputs.current[1].value.length !== inputs.current[2].value.length) < 6) {
+            setValidation("passwords don't match")
+            return
+        }
     }
     return (
         <> {modalState.signUpModal && <div className="position-fixed top-0 vw-100 vh-100">
@@ -62,7 +73,7 @@ export default function SignUpModal(props) {
                                         type="password"
                                         id="repeatPwd"
                                         className="form-control" />
-                                    <p className="text-danger mt-1">Validation</p>
+                                    <p className="text-danger mt-1">{validation}</p>
                                 </div>
                                 <button className='btn btn-primary'>Submit</button>
                             </form>

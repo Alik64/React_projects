@@ -29,7 +29,7 @@ export default function SignUpModal(props) {
             return
         }
 
-        //INSCRIPTION
+        //Validaiton coté FireBase
 
         try {
             const cred = await signUp( // nous retourne un objet d'utilisateur qu'on a crée
@@ -40,7 +40,7 @@ export default function SignUpModal(props) {
             setValidation("")
             console.log(cred)
         } catch (err) {
-            console.dir(err)
+
             if (err.code === "auth/email-already-in-use") {
                 setValidation("User already exist")
             }

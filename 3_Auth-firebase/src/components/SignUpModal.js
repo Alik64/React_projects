@@ -39,8 +39,9 @@ export default function SignUpModal(props) {
             )
             formRef.current.reset()
             setValidation("")
-            navigate('/private/private-home')
             // une fois connecté 
+            navigate('/private/private-home')
+            toggleModals("close")
 
 
         } catch (err) {

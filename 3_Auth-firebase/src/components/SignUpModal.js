@@ -1,9 +1,10 @@
 import React, { useContext, useRef, useState } from 'react'
 import { UserContext } from '../context/userContext'
+import { useNavigate } from 'react-router-dom'
 
 export default function SignUpModal(props) {
     const { modalState, toggleModals, signUp } = useContext(UserContext)
-    console.log(signUp)
+    const navigate = useNavigate()
 
     const [validation, setValidation] = useState("")
 
@@ -38,7 +39,10 @@ export default function SignUpModal(props) {
             )
             formRef.current.reset()
             setValidation("")
-            console.log(cred)
+            navigate('/private/private-home')
+            // une fois connecté 
+
+
         } catch (err) {
 
             if (err.code === "auth/email-already-in-use") {

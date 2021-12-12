@@ -40,7 +40,13 @@ export default function SignUpModal(props) {
             setValidation("")
             console.log(cred)
         } catch (err) {
-
+            console.dir(err)
+            if (err.code === "auth/email-already-in-use") {
+                setValidation("User already exist")
+            }
+            if (err.code === "auth/invalid-email") {
+                setValidation("Invalid E-mail")
+            }
         }
     }
     return (

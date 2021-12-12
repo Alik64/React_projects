@@ -11,6 +11,13 @@ import { auth } from '../firebase-config'
 export const UserContext = createContext()
 
 export function UserContextProvider(props) {
+
+    // AUTH
+    const [currentUser, setCurrentUser] = useState()
+    const [loadingData, setLoadingData] = useState(true)
+    const signUp = (email, pwd) => createUserWithEmailAndPassword(auth, email, pwd)
+
+    // MODAL
     const [modalState, setModalState] = useState({
         signInModal: false,
         signUpModal: false

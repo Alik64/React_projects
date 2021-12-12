@@ -1,10 +1,19 @@
-import React, { useContext } from 'react'
+import React, { useContext, useRef, useState } from 'react'
 import { UserContext } from '../context/userContext'
 
 export default function SignUpModal(props) {
     const { modalState, toggleModals } = useContext(UserContext)
+    const inputs = useRef([])
 
+    const addInputs = el => {
+        if (el && !inputs.current.includes(el)) {
+            inputs.current.push(el)
+        }
+    }
+    const handleForm = e => {
+        e.preventDefault()
 
+    }
     return (
         <> {modalState.signUpModal && <div className="position-fixed top-0 vw-100 vh-100">
             <div // Overlay
@@ -21,10 +30,13 @@ export default function SignUpModal(props) {
 
                         <div className="modal-body">
 
-                            <form className="sign-up-form">
+                            <form
+                                onSubmit={handleForm}
+                                className="sign-up-form">
                                 <div className="mb-3">
                                     <label htmlFor="signUpEmail" className='form-label'>Email adress</label>
                                     <input
+                                        ref={addInputs}
                                         required
                                         name="email"
                                         type="email"
@@ -34,6 +46,7 @@ export default function SignUpModal(props) {
                                 <div className="mb-3">
                                     <label htmlFor="signUpPwd" className='form-label'>Password</label>
                                     <input
+                                        ref={addInputs}
                                         required
                                         name="pwd"
                                         type="password"
@@ -43,6 +56,7 @@ export default function SignUpModal(props) {
                                 <div className="mb-3">
                                     <label htmlFor="repeatPwd" className='form-label'>Repeat password</label>
                                     <input
+                                        ref={addInputs}
                                         required
                                         name="pwd"
                                         type="password"

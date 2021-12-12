@@ -2,17 +2,21 @@ import React, { useContext, useRef, useState } from 'react'
 import { UserContext } from '../context/userContext'
 
 export default function SignUpModal(props) {
-    const { modalState, toggleModals } = useContext(UserContext)
-    const inputs = useRef([])
+    const { modalState, toggleModals, signUp } = useContext(UserContext)
+    console.log(signUp)
 
+    const [validation, setValidation] = useState("")
+
+    const inputs = useRef([])
     const addInputs = el => {
         if (el && !inputs.current.includes(el)) {
             inputs.current.push(el)
         }
     }
-    const [validation, setValidation] = useState("")
-    // Validation
-    const handleForm = e => {
+    const formRef = useRef()
+
+    // Validation FRONT
+    const handleForm = async (e) => {
         e.preventDefault()
         // si Password moins 6 charactères
 
@@ -20,9 +24,23 @@ export default function SignUpModal(props) {
             setValidation("6 characters min")
             return
         }
-        if ((inputs.current[1].value.length !== inputs.current[2].value.length) < 6) {
+        if (inputs.current[1].value !== inputs.current[2].value) {
             setValidation("passwords don't match")
             return
+        }
+
+        //INSCRIPTION
+
+        try {
+            const cred = await signUp( // nous retourne un objet d'utilisateur qu'on a crée
+                inputs.current[0].value,
+                inputs.current[1].value,
+            )
+            formRef.current.reset()
+            setValidation("")
+            console.log(cred)
+        } catch (err) {
+
         }
     }
     return (
@@ -42,6 +60,7 @@ export default function SignUpModal(props) {
                         <div className="modal-body">
 
                             <form
+                                ref={formRef}
                                 onSubmit={handleForm}
                                 className="sign-up-form">
                                 <div className="mb-3">
